@@ -1,11 +1,11 @@
 app:
   version_check_url: "https://raw.githubusercontent.com/sansan0/TrendRadar/refs/heads/master/version"
-  show_version_update: true # 控制显示版本更新提示，如果 false，则不接受新版本提示
+  show_version_update:   显示版本更新：true # 控制显示版本更新提示，如果 false，则不接受新版本提示# 控制显示版本更新提示，如果 false，则不接受新版本提示
 
 crawler:
-  request_interval: 1000 # 请求间隔(毫秒)
-  enable_crawler: true # 是否启用爬取新闻功能，如果 false，则直接停止程序
-  use_proxy: false # 是否启用代理，false 时为关闭
+  request_interval:   请求间隔(毫秒): 1000# 请求间隔(毫秒)
+  enable_crawler:   enable_crawler: true # 是否启用爬取新闻功能，如果 false，则直接停止程序# 是否启用爬取新闻功能，如果 false，则直接停止程序
+  use_proxy:   use_proxy: false # 是否启用代理，false 时为关闭# 是否启用代理，false 时为关闭
   default_proxy: "http://127.0.0.1:10086"
 
 # 🔸 daily（当日汇总模式）
@@ -25,49 +25,49 @@ crawler:
 
 # 推送模式选择
 report:
-  mode: "daily" # 可选: "daily"|"incremental"|"current"
-  rank_threshold: 5 # 排名高亮阈值
+  mode: "incremental"  模式: "每日" # 可选: "每日"|"增量"|"当前"# 可选: "daily"|"incremental"|"current"
+  rank_threshold:   rank_threshold: 5 # 排名高亮阈值# 排名高亮阈值
 
 notification:
-  enable_notification: true # 是否启用通知功能，如果 false，则不发送手机通知
-  message_batch_size: 4000 # 消息分批大小（字节）(这个配置别动)
-  dingtalk_batch_size: 20000 # 钉钉消息分批大小（字节）(这个配置也别动)
-  feishu_batch_size: 29000 # 飞书消息分批大小（字节）
-  batch_send_interval: 3 # 批次发送间隔（秒）
-  feishu_message_separator: "━━━━━━━━━━━━━━━━━━━" # feishu 消息分割线
+  enable_notification:   enable_notification: true # 是否启用通知功能，如果 false，则不发送手机通知# 是否启用通知功能，如果 false，则不发送手机通知
+  message_batch_size:   消息分批大小：4000 # 消息分批大小（字节）(这个配置别动)# 消息分批大小（字节）(这个配置别动)
+  dingtalk_batch_size:   钉钉消息分批大小（字节）: 20000 # 钉钉消息分批大小（字节）(这个配置也别动)# 钉钉消息分批大小（字节）(这个配置也别动)
+  feishu_batch_size:   feishu_batch_size: 29000 # 飞书消息分批大小（字节）# 飞书消息分批大小（字节）
+  batch_send_interval:   批次发送间隔（秒）: 3# 批次发送间隔（秒）
+  feishu_message_separator: "━━━━━━━━━━━━━━━━━━━"  feishu_message_separator: "━━━━━━━━━━━━━━━━━━━" # feishu 消息分割线# feishu 消息分割线
 
-  # 🕐 推送时间窗口控制（可选功能）
-  # 用途：限制推送的时间范围，避免非工作时间打扰
-  # 适用场景：
-  #   - 只想在工作日白天接收推送（如 09:00-18:00）
-  #   - 希望在晚上固定时间收到汇总（如 20:00-22:00）
+  # 🕐 推送时间窗口控制（可选功能）# 🕐 推送时间窗口控制（可选功能）
+  # 用途：限制推送的时间范围，避免非工作时间打扰# 用途：限制推送的时间范围，避免非工作时间打扰
+  # 适用场景：# 适用场景：
+  # # - 只想在工作日白天接收推送（如 09:00-18:00）#   - 只想在工作日白天接收推送（如 09:00-18:00）
+  # - 希望在晚上固定时间收到汇总（如 20:00-22:00）#   - 希望在晚上固定时间收到汇总（如 20:00-22:00）
   push_window:
-    enabled: false  # 是否启用推送时间窗口控制，默认关闭
-    # 注意：GitHub Actions 执行时间不稳定，时间范围建议至少留足 2 小时
-    # 如果想要精准的定时推送，建议使用 Docker 部署在个人服务器上
+    enabled:     启用: true  # 是否启用推送时间窗口控制，默认关闭# 是否启用推送时间窗口控制，默认关闭
+    # 注意：GitHub Actions 执行时间不稳定，时间范围建议至少留足 2 小时# 注意：GitHub Actions 执行时间不稳定，时间范围建议至少留足 2 小时
+    # 如果想要精准的定时推送，建议使用 Docker 部署在个人服务器上# 如果想要精准的定时推送，建议使用 Docker 部署在个人服务器上
     time_range:
-      start: "20:00"  # 推送时间窗口开始（北京时间）
-      end: "22:00"    # 推送时间窗口结束（北京时间）
-    once_per_day: true  # 每天在时间窗口内只推送一次，如果 false，则窗口内每次执行都推送
-    push_record_retention_days: 7  # 推送记录保留天数
+      start: "09:30"      开始时间："20:00"  # 推送时间窗口开始（北京时间）# 推送时间窗口开始（北京时间）
+      end: "18:00"      end: "22:00"    # 推送时间窗口结束（北京时间）# 推送时间窗口结束（北京时间）
+    once_per_day:     once_per_day: true  # 每天在时间窗口内只推送一次，如果 false，则窗口内每次执行都推送# 每天在时间窗口内只推送一次，如果 false，则窗口内每次执行都推送
+    push_record_retention_days:     推送记录保留天数: 7  # 推送记录保留天数# 推送记录保留天数
 
-  # 请务必妥善保管好 webhooks，不要公开
-  # 如果你以 fork 的方式将本项目部署在 GitHub 上，请勿在此填写任何 webhooks，而是将 webhooks 填入 GitHub Secret
-  # 不然轻则手机上收到奇怪的广告推送，重则存在更严重的安全隐患
+  # 请务必妥善保管好 webhooks，不要公开# 请务必妥善保管好 webhooks，不要公开
+  # 如果你以 fork 的方式将本项目部署在 GitHub 上，请勿在此填写任何 webhooks，而是将 webhooks 填入 GitHub Secret# 如果你以 fork 的方式将本项目部署在 GitHub 上，请勿在此填写任何 webhooks，而是将 webhooks 填入 GitHub Secret
+  # 不然轻则手机上收到奇怪的广告推送，重则存在更严重的安全隐患# 不然轻则手机上收到奇怪的广告推送，重则存在更严重的安全隐患
   webhooks:
-    feishu_url: "" # 飞书机器人的 webhook URL
-    dingtalk_url: "" # 钉钉机器人的 webhook URL
-    wework_url: "" # 企业微信机器人的 webhook URL
-    telegram_bot_token: "" # Telegram Bot Token
-    telegram_chat_id: "" # Telegram Chat ID
-    email_from: "" # 发件人邮箱地址
-    email_password: "" # 发件人邮箱密码或授权码
-    email_to: "" # 收件人邮箱地址，多个收件人用逗号分隔
-    email_smtp_server: "" # SMTP服务器地址（可选，留空自动识别）
-    email_smtp_port: "" # SMTP端口（可选，留空自动识别）
-    ntfy_server_url: "https://ntfy.sh" # ntfy服务器地址，默认使用公共服务，可改为自托管地址
-    ntfy_topic: "" # ntfy主题名称
-    ntfy_token: "" # ntfy访问令牌（可选，用于私有主题）
+    feishu_url: ""    feishu_url: "" # 飞书机器人的 webhook URL# 飞书机器人的 webhook URL
+    dingtalk_url: ""    dingtalk_url: "" # 钉钉机器人的 webhook URL# 钉钉机器人的 webhook URL
+    wework_url: ""    wework_url: "" # 企业微信机器人的 webhook URL# 企业微信机器人的 webhook URL
+    telegram_bot_token: ""    telegram_bot_token: "" # 电报机器人令牌# Telegram Bot Token
+    telegram_chat_id: ""    telegram_chat_id: "" # Telegram 聊天 ID# Telegram Chat ID
+    email_from: ""    email_from: "" # 发件人邮箱地址# 发件人邮箱地址
+    email_password: ""    email_password: "" # 发件人邮箱密码或授权码# 发件人邮箱密码或授权码
+    email_to: ""    email_to: "" # 收件人邮箱地址，多个收件人用逗号分隔# 收件人邮箱地址，多个收件人用逗号分隔
+    email_smtp_server: ""    email_smtp_server: "" # SMTP服务器地址（可选，留空自动识别）# SMTP服务器地址（可选，留空自动识别）
+    email_smtp_port: ""    email_smtp_port: "" # SMTP端口（可选，留空自动识别）# SMTP端口（可选，留空自动识别）
+    ntfy_server_url: "https://ntfy.sh"    ntfy_server_url: "https://ntfy.sh" # ntfy服务器地址，默认使用公共服务，可改为自托管地址# ntfy服务器地址，默认使用公共服务，可改为自托管地址
+    ntfy_topic: ""    ntfy_topic: "" # ntfy主题名称# ntfy主题名称
+    ntfy_token: ""    ntfy_token: "" # ntfy访问令牌（可选，用于私有主题）# ntfy访问令牌（可选，用于私有主题）
 
 # 用于让关注度更高的新闻在更前面显示，即用算法重新组合不同平台的热搜排序形成你侧重的热搜，合起来是 1 就行
 weight:
